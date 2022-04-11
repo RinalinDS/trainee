@@ -9,6 +9,7 @@ export const Header = () => {
         <div className={styles.header}>
             <NavLink to={'/placeholder'}> Placeholder</NavLink>
             <NavLink to={'/omdb'}> OMDBApi</NavLink>
+            <NavLink to={'/weather'}> Weather</NavLink>
         </div>
     );
 };

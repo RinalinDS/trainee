@@ -1,13 +1,16 @@
 import {call, put, takeEvery} from 'redux-saga/effects';
 import {AxiosResponse} from 'axios';
-import {omdbAPI, placeholderAPI} from '../api/API';
+import {omdbAPI, placeholderAPI, weatherAPI} from '../api/API';
+import {ThunkType} from './store';
 
 // initial state
 
 const initialState: AppReducerStateType = {
     photos: [],
 
-    movies: {} as movieType
+    movies: {} as movieType,
+    cityWeather: {} as WeatherResponseType
+
 }
 
 // reducer
@@ -19,8 +22,8 @@ export const appReducer = (state: AppReducerStateType = initialState, action: Ap
         case 'SET_MOVIE':
             // @ts-ignore
             return {...state, movies: {...action.payload.movie}}
-
-
+        case 'SET_CURRENT_WEATHER':
+            return {...state, cityWeather: {...action.payload.cityWeather}}
         default:
             return state
     }
@@ -34,19 +37,22 @@ export const requestPhotosAC = (amount: number) => ({type: 'REQUEST_PHOTOS', pay
 
 export const setMovieAC = (movie: Object) => ({type: 'SET_MOVIE', payload: {movie}} as const)
 export const requestMovieByTitleAC = (title: string) => ({type: 'REQUEST_MOVIE', payload: {title}} as const)
+export const setCurrentCityWeatherAC = (cityWeather: WeatherResponseType) => ({
+    type: 'SET_CURRENT_WEATHER',
+    payload: {cityWeather}
+} as const)
 
 
 // Thunks
-//
-// export const setPhotosTC = (amount: number): ThunkType => dispatch => {
-//     traineeAPI.getPhotos(amount)
-//         .then(res => dispatch(setPhotosAC(res.data)))
-//         .catch(e => {
-//             console.warn()
-//         })
-//
-// }
 
+export const setCurrentWeatherInCity = (city: string): ThunkType => async dispatch => {
+    try {
+        const response = await weatherAPI.getCurrentWeatherInCity(city)
+        dispatch(setCurrentCityWeatherAC(response.data))
+    } catch (e) {
+        console.warn(e)
+    }
+}
 
 // Sagas
 
@@ -82,7 +88,8 @@ export type AppReducerActionType =
     ReturnType<typeof setPhotosAC> |
     ReturnType<typeof requestPhotosAC> |
     ReturnType<typeof requestMovieByTitleAC> |
-    ReturnType<typeof setMovieAC>
+    ReturnType<typeof setMovieAC> |
+    ReturnType<typeof setCurrentCityWeatherAC>
 
 
 export type photosType = {
@@ -95,6 +102,7 @@ export type photosType = {
 export type AppReducerStateType = {
     photos: Array<photosType>
     movies: movieType
+    cityWeather: WeatherResponseType
 }
 
 export type movieType = {
@@ -103,4 +111,17 @@ export type movieType = {
     Poster: string
     Plot: string
     Error: string
+}
+
+export type WeatherResponseType = {
+    location: {
+        name: string
+        country: string
+    }
+    current: {
+        temp_c: number
+        wind_kph: number
+        cloud: number
+        feelslike_c: number
+    }
 }
