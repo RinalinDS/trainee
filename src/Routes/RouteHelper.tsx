@@ -3,6 +3,7 @@ import {Photos} from '../Photos/Photos';
 import React from 'react';
 import {Omdb} from '../omdb/omdb';
 import {Weather} from '../Weather/Weather';
+import {TestComponent} from '../ForTests/TestComponent';
 
 export const RouteHelper = () => useRoutes([
     {path: "/home", element: <Photos/>},
@@ -14,6 +15,7 @@ export const RouteHelper = () => useRoutes([
     },
     {path: "omdb", element: <Omdb/>},
     {path: "weather", element: <Weather/>},
+    {path: "test", element: <TestComponent/>},
     {path: "*", element: <Navigate to={'/404'}/>},
 
 ]);

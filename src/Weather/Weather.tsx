@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../redux/store';
 import {setCurrentWeatherInCity, WeatherResponseType} from '../redux/appReducer';
@@ -7,14 +7,14 @@ import styles from '../Weather/Weather.module.css';
 export const Weather = () => {
     const dispatch = useDispatch()
     const weather = useSelector<AppRootStateType, WeatherResponseType>(state => state.app.cityWeather)
-    const [title, setTitle] = useState<string>('')
+    // const [title, setTitle] = useState<string>('')
 
     const getWeatherDebounced = (city: string) => {
         dispatch(setCurrentWeatherInCity(city))
     }
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value)
+        // setTitle(event.target.value)
         getWeatherDebounced(event.target.value)
     }
     const debouncedHandler = debounce(onChangeHandler, 1500)
@@ -41,6 +41,5 @@ export const Weather = () => {
             </div>}
         </div>
     )
-        ;
-};
+}
 

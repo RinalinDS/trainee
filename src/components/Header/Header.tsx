@@ -10,6 +10,7 @@ export const Header = () => {
             <NavLink to={'/placeholder'}> Placeholder</NavLink>
             <NavLink to={'/omdb'}> OMDBApi</NavLink>
             <NavLink to={'/weather'}> Weather</NavLink>
+            <NavLink to={'/test'}> TestComponent</NavLink>
         </div>
     );
 };

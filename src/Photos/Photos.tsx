@@ -4,6 +4,7 @@ import {AppRootStateType} from '../redux/store';
 import {photosType, requestPhotosAC} from '../redux/appReducer';
 import styles from './Photos.module.css'
 
+
 export const Photos = () => {
     const [amount, setAmount] = useState<number>(0)
 
@@ -30,6 +31,7 @@ export const Photos = () => {
             <div>
                 {mappedPhotos}
             </div>
+
 
         </div>
     );
