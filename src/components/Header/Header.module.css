@@ -1,8 +1,8 @@
 .header {
     display: flex;
-    justify-content: center ;
+    justify-content: space-between ;
     align-items: flex-end;
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 40px;
     margin-right : 40px
 }

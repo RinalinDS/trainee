@@ -3,7 +3,7 @@
 const initialState: initialStateTypeForPaginationReducer = {
     currentPage: 1,
     totalItemsCount: 100,
-    amountOfElementsToShow: 10
+    amountOfElementsToShow: 3
 }
 
 // reducer

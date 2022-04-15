@@ -1,0 +1,20 @@
+.radio {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.lightblue {
+    background-color: lightblue;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}

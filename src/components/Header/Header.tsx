@@ -11,6 +11,8 @@ export const Header = () => {
             <NavLink to={'/omdb'}> OMDBApi</NavLink>
             <NavLink to={'/weather'}> Weather</NavLink>
             <NavLink to={'/test'}> TestComponent</NavLink>
+            <NavLink to={'/pagination'}> DefaultPagination</NavLink>
+            <NavLink to={'/dynamic'}> DynamicPagination</NavLink>
         </div>
     );
 };

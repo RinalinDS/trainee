@@ -4,6 +4,8 @@ import React from 'react';
 import {Omdb} from '../omdb/omdb';
 import {Weather} from '../Weather/Weather';
 import {TestComponent} from '../ForTests/TestComponent';
+import DefaultPagination from '../ForTests/DefaultPagination';
+import DynamicPagination from '../ForTests/DynamicPagination';
 
 export const RouteHelper = () => useRoutes([
     {path: "/home", element: <Photos/>},
@@ -16,6 +18,8 @@ export const RouteHelper = () => useRoutes([
     {path: "omdb", element: <Omdb/>},
     {path: "weather", element: <Weather/>},
     {path: "test", element: <TestComponent/>},
+    {path: "pagination", element: <DefaultPagination/>},
+    {path: "dynamic", element: <DynamicPagination/>},
     {path: "*", element: <Navigate to={'/404'}/>},
 
 ]);

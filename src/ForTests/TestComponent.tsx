@@ -1,13 +1,15 @@
 import React from 'react'
-import DefaultPagination from './DefaultPagination';
+import {Select} from '../components/Select/Select';
+import Radio from '../components/Radio/Radio';
 
 export const TestComponent = () => {
     return (
-        <>
-            {/*<Paginator />*/}
-            {/*<Select />*/}
-            {/*<DynamicPagination />*/}
-            <DefaultPagination/>
-        </>
+        <div>
+
+            <Select/>
+            <Radio />
+
+
+        </div>
     )
 }
