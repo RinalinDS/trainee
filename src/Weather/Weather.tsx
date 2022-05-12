@@ -31,7 +31,7 @@ export const Weather = () => {
 
     return (
         <div className={styles.weather}>
-            <input type={'text'} placeholder={'Type a city name'} onChange={debouncedHandler}/>
+            <input type={'text'} placeholder={'Type a city name'} onChange={debouncedHandler} />
             {(Object.keys(weather).length !== 0) && <div>
                 <h2>City: {weather.location.name} , {weather.location.country}</h2>
                 <p>Current temp: {weather.current.temp_c} c</p>

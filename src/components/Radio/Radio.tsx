@@ -13,10 +13,10 @@ const Radio = () => {
         <div className={`${s[theme]} ${s.radio}` }>
 
             {themes.map((m,i) =>
-                <label key={`${i + m}`}>
+                <span key={`${i + m}`}>
                 <input type={'radio'} value={m} name={m} checked={m === theme} onChange={setThemeHandler}/>
                     {m}
-                </label>
+                </span>
             )}
 
         </div>
