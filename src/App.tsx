@@ -10,28 +10,25 @@ import DefaultPagination from './ForTests/DefaultPagination';
 import DynamicPagination from './ForTests/DynamicPagination';
 import AppThird from './AppThird';
 import {Header} from './components/Header/Header';
+import NotFoundPage from './pages/404/NotFoundPage';
 
 
 function App() {
-  console.log('APP')
 
   return (
     <>
 
       <Routes>
         <Route index element={<AppSecond/>}/>
-        <Route path={'/home'} element={<AppThird/>}/>
+        <Route path={'home'} element={<AppThird/>}/>
         <Route path={'placeholder'} element={<><Header/><Photos/></>}/>
-        <Route path={'/omdb'} element={<><Header/><Omdb/></>}/>
-        <Route path={'/weather'} element={<><Header/><Weather/></>}/>
-        <Route path={'/test'} element={<><Header/><TestComponent/></>}/>
-        <Route path={'/pagination'} element={<><Header/><DefaultPagination/></>}/>
-        <Route path={'/dynamic'} element={<><Header/><DynamicPagination/></>}/>
-
+        <Route path={'omdb'} element={<><Header/><Omdb/></>}/>
+        <Route path={'weather'} element={<><Header/><Weather/></>}/>
+        <Route path={'test'} element={<><Header/><TestComponent/></>}/>
+        <Route path={'pagination'} element={<><Header/><DefaultPagination/></>}/>
+        <Route path={'dynamic'} element={<><Header/><DynamicPagination/></>}/>
         <Route path={'*'} element={<Navigate to={'/404'}/>}/>
-        <Route path={'/404'}
-               element={<div style={{display: 'flex', alignItems: 'center', justifyContent: "center"}}>SOMEONE
-                 FUCKED UP</div>}/>
+        <Route path={'/404'} element={<NotFoundPage/>}/>
       </Routes>
     </>
   );
