@@ -7,7 +7,6 @@ import {ThunkType} from './store';
 
 const initialState: AppReducerStateType = {
     photos: [],
-
     movies: {} as movieType,
     cityWeather: {} as WeatherResponseType
 

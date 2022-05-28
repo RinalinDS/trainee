@@ -1,31 +1,34 @@
-import React, {ChangeEvent, FC} from 'react'
+import React, {FC} from 'react'
+import styles from '../../App.module.scss';
 
 
 type ToggleType = {
   value: boolean
-  onChange: (value: boolean) => void
+  onChange: () => void
   children: React.ReactNode
 }
 
-export const Toggle: FC<ToggleType> = ({value, onChange, children}) => {
-  const onClickHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.currentTarget.checked)
-  }
+export const Toggler: FC<ToggleType> = ({value, onChange, children}) => {
+
   return (
-    <div>
-      <label htmlFor="toggler">
-        <input
-          id="toggler"
-          type="checkbox"
-          onChange={onClickHandler}
-          checked={value}
-          readOnly
-        />
+    <div style={{display: 'flex', flexDirection: 'row'}}>
+      <div>
+        <label htmlFor="toggler">
+          <input
+            id="toggler"
+            type="checkbox"
+            onClick={onChange}
+            checked={value}
+            readOnly
+          />
+        </label>
+      </div>
+      <div className={styles.theme}>
         {children}
-      </label>
+      </div>
+
     </div>
 
   )
 }
 
-export default Toggle

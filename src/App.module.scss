@@ -1,7 +1,7 @@
 @import 'components/common/styles/mixins';
 
 .top {
-  @include flex(row, space-evenly , space-between, wrap);
+  @include flex(row, space-evenly, space-between, wrap);
   padding-top: 10px;
-
 }
+
