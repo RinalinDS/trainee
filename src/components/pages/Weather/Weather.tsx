@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from '../store/store';
-import {setCurrentWeatherInCity, WeatherResponseType} from '../store/appReducer';
-import styles from '../Weather/Weather.module.css';
+import {AppRootStateType} from '../../../store/store';
+import {setCurrentWeatherInCity, WeatherResponseType} from '../../../store/appReducer';
+import styles from './Weather.module.css';
 
 export const Weather = () => {
     const dispatch = useDispatch()

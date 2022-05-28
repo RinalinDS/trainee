@@ -1,11 +1,11 @@
 import {Navigate, useRoutes} from 'react-router-dom';
-import {Photos} from '../Photos/Photos';
+import {Photos} from '../pages/Photos/Photos';
 import React from 'react';
-import {Omdb} from '../omdb/omdb';
-import {Weather} from '../Weather/Weather';
-import {TestComponent} from '../ForTests/TestComponent';
-import DefaultPagination from '../ForTests/DefaultPagination';
-import DynamicPagination from '../ForTests/DynamicPagination';
+import {Omdb} from '../pages/omdb/omdb';
+import {Weather} from '../pages/Weather/Weather';
+import {TestComponent} from '../pages/TestComponent/TestComponent';
+import DefaultPagination from '../pages/DefaultPagination/DefaultPagination';
+import DynamicPagination from '../pages/DynamicPagination/DynamicPagination';
 
 
 export const RouteHelper = () => useRoutes([

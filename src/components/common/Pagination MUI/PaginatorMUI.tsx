@@ -3,7 +3,7 @@ import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import s from './Page.module.css'
 import {useDispatch} from 'react-redux';
-import {setAmountOfElementsToShow, setCurrentPage} from '../../store/cardsReducer';
+import {setAmountOfElementsToShow, setCurrentPage} from '../../../store/cardsReducer';
 
 type propsType = {
   currentPage: number
@@ -14,7 +14,7 @@ type propsType = {
 
 const options = [2, 3, 4, 5, 10]
 
-export const Paginator = ({currentPage, totalItemsCount, amountOfElementsToShow, itemName}: propsType) => {
+export const PaginatorMUI = ({currentPage, totalItemsCount, amountOfElementsToShow, itemName}: propsType) => {
 
   const pages = Math.ceil(totalItemsCount / amountOfElementsToShow)
 

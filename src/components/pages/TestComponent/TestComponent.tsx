@@ -1,6 +1,6 @@
 import React from 'react'
-import {Select} from '../components/Select/Select';
-import Radio from '../components/Radio/Radio';
+import {Select} from '../../Select/Select';
+import Radio from '../../Radio/Radio';
 
 export const TestComponent = () => {
     return (

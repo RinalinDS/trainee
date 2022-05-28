@@ -1,13 +1,14 @@
 import React, {FC, useEffect} from 'react';
-import {Paginator} from '../components/Pagination/Pagination';
-import {useAppSelector} from '../store/store';
+import {PaginatorMUI} from '../../common/Pagination MUI/PaginatorMUI';
+import {useAppSelector} from '../../../store/store';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
-import {photosType, setPhotosAC} from '../store/appReducer';
+import {photosType, setPhotosAC} from '../../../store/appReducer';
 import s from '../Photos/Photos.module.css';
-import {setTotalItemsCount} from '../store/cardsReducer';
+import {setTotalItemsCount} from '../../../store/cardsReducer';
 
 const DefaultPagination: FC = () => {
+  // TODO убрать MaterialUI
     const currentPage = useAppSelector<number>(state => state.cards.currentPage)
     const totalItemsCount = useAppSelector<number>(state => state.cards.totalItemsCount)
     const photos = useAppSelector<photosType[]>(state => state.app.photos)
@@ -32,7 +33,7 @@ const DefaultPagination: FC = () => {
                     <img src={m.thumbnailUrl} alt={'photos'}/>
                 </div>)}
             </div>
-            <Paginator currentPage={currentPage} amountOfElementsToShow={amountOfElementsToShow} totalItemsCount={totalItemsCount} itemName={'packs'}/>
+            <PaginatorMUI currentPage={currentPage} amountOfElementsToShow={amountOfElementsToShow} totalItemsCount={totalItemsCount} itemName={'packs'}/>
         </div>
     );
 };

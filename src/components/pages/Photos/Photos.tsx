@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from '../store/store';
-import {photosType, requestPhotosAC} from '../store/appReducer';
+import {AppRootStateType} from '../../../store/store';
+import {photosType, requestPhotosAC} from '../../../store/appReducer';
 import styles from './Photos.module.css'
-import Flex from '../components/common/Flex/Flex';
+import Flex from '../../common/Flex/Flex';
 
 
 export const Photos = () => {

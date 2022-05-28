@@ -13,7 +13,6 @@ const weatherInstance = axios.create({
 })
 
 
-
 const APIkey = 'c128d6a5'
 const APIkeyWeather = '23de8120205d45f589a195634221104'
 

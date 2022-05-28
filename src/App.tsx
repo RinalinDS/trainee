@@ -1,18 +1,18 @@
 import React, {FC, useEffect, useState} from 'react';
 import styles from './App.module.scss';
 import {Navigate, Route, Routes} from 'react-router-dom';
-import {Photos} from './Photos/Photos';
-import {Omdb} from './omdb/omdb';
-import {Weather} from './Weather/Weather';
-import {TestComponent} from './ForTests/TestComponent';
-import DefaultPagination from './ForTests/DefaultPagination';
-import DynamicPagination from './ForTests/DynamicPagination';
+import {Photos} from './components/pages/Photos/Photos';
+import {Omdb} from './components/pages/omdb/omdb';
+import {Weather} from './components/pages/Weather/Weather';
+import {TestComponent} from './components/pages/TestComponent/TestComponent';
+import DefaultPagination from './components/pages/DefaultPagination/DefaultPagination';
+import DynamicPagination from './components/pages/DynamicPagination/DynamicPagination';
 import {Header} from './components/Header/Header';
-import NotFoundPage from './pages/404/NotFoundPage';
+import NotFoundPage from './components/pages/404/NotFoundPage';
 import {Start} from './components/Start/Start';
 import styled, {ThemeProvider} from 'styled-components';
 import {Toggler} from './components/Toggler/Toggler';
-import {darkTheme, GlobalStyles, lightTheme} from './Global';
+import {darkTheme, GlobalStyles, lightTheme} from './components/common/styles/Global';
 
 
 const AppWrapper = styled.div<{ background?: boolean }>`
@@ -49,9 +49,7 @@ export const App: FC = () => {
       <AppWrapper>
         <div className={styles.top}>
           {/*<Flex direction={'row'} justify={'center'} align={'flex-start'}>*/}
-
           <Toggler value={isDarkTheme} onChange={toggleTheme}> {isDarkTheme ? 'Make Light' : ' Make Dark'} </Toggler>
-
           <Header/>
           {/*</Flex>*/}
         </div>
