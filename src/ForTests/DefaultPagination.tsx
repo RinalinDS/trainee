@@ -1,11 +1,11 @@
 import React, {FC, useEffect} from 'react';
 import {Paginator} from '../components/Pagination/Pagination';
-import {useAppSelector} from '../redux/store';
+import {useAppSelector} from '../store/store';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
-import {photosType, setPhotosAC} from '../redux/appReducer';
+import {photosType, setPhotosAC} from '../store/appReducer';
 import s from '../Photos/Photos.module.css';
-import {setTotalItemsCount} from '../redux/cardsReducer';
+import {setTotalItemsCount} from '../store/cardsReducer';
 
 const DefaultPagination: FC = () => {
     const currentPage = useAppSelector<number>(state => state.cards.currentPage)

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {WeatherResponseType} from '../redux/appReducer';
+import {WeatherResponseType} from '../store/appReducer';
 
 const placeholderInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com'

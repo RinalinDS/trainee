@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios, {AxiosResponse} from 'axios';
-import {photosType} from '../redux/appReducer';
+import {photosType} from '../store/appReducer';
 import s from './../Photos/Photos.module.css'
 
 
@@ -37,7 +37,7 @@ const DynamicPagination = () => {
         <div>
             {photos.map(m => <div key={m.id} className={s.photos}>
                 <div>{m.id}. {m.title}</div>
-                <img src={m.thumbnailUrl} alt={'photo'}/>
+                <img src={m.thumbnailUrl} alt={'thumbnail'}/>
             </div>)}
         </div>
     );

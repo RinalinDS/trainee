@@ -1,0 +1,7 @@
+@import './src/scss/mixins';
+
+.top {
+  @include flex(row, space-evenly , space-between, wrap);
+  padding-top: 10px;
+
+}

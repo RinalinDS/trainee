@@ -3,7 +3,7 @@ import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
 import s from './Page.module.css'
 import {useDispatch} from 'react-redux';
-import {setAmountOfElementsToShow, setCurrentPage} from '../../redux/cardsReducer';
+import {setAmountOfElementsToShow, setCurrentPage} from '../../store/cardsReducer';
 
 type propsType = {
   currentPage: number

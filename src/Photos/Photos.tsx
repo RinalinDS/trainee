@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from '../redux/store';
-import {photosType, requestPhotosAC} from '../redux/appReducer';
+import {AppRootStateType} from '../store/store';
+import {photosType, requestPhotosAC} from '../store/appReducer';
 import styles from './Photos.module.css'
+import Flex from '../Flex';
 
 
 export const Photos = () => {
@@ -11,9 +12,9 @@ export const Photos = () => {
     const dispatch = useDispatch()
     const photos = useSelector<AppRootStateType, photosType[]>(state => state.app.photos)
 
-    const mappedPhotos = photos.map(m => <p><h2>{m.title}</h2>
-            <img src={m.thumbnailUrl} alt={'movie poster'}/>
-        </p>
+    const mappedPhotos = photos.map(m => <div><h2>{m.title}</h2>
+           <Flex justify={'center'}> <img src={m.thumbnailUrl} alt={'movie poster'}/> </Flex>
+        </div>
     )
 
 
@@ -28,7 +29,7 @@ export const Photos = () => {
             <input type={'number'} value={amount} onChange={e => {
                 setAmount(+e.currentTarget.value)
             }}/>
-            <div>
+           <div>
                 {mappedPhotos}
             </div>
 

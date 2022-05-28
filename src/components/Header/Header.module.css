@@ -1,8 +1,10 @@
 .header {
+    width: 80%;
     display: flex;
-    justify-content: space-between ;
-    align-items: flex-end;
-    flex-direction: row;
-    margin-top: 40px;
-    margin-right : 40px
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.header a {
+    text-decoration: none;
 }

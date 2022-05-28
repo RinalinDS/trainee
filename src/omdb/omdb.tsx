@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from '../redux/store';
-import {movieType, requestMovieByTitleAC} from '../redux/appReducer';
+import {AppRootStateType} from '../store/store';
+import {movieType, requestMovieByTitleAC} from '../store/appReducer';
 import styles from './Omdb.module.css'
 
 export const Omdb = () => {
