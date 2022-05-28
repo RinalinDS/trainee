@@ -8,3 +8,6 @@
 .header a {
     text-decoration: none;
 }
+.header a:active {
+    color: #15b715;
+}

@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../store/store';
 import {photosType, requestPhotosAC} from '../store/appReducer';
 import styles from './Photos.module.css'
-import Flex from '../Flex';
+import Flex from '../components/common/Flex/Flex';
 
 
 export const Photos = () => {

@@ -15,7 +15,6 @@ type FlexType = {
 }
 
 const Flex: FC<FlexType> = (props) => {
-  console.log(props)
   return (
     <StyledFlex {...props} />
   );

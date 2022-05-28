@@ -1,0 +1,9 @@
+@import './src/components/common/styles/mixins';
+
+.startContainer {
+  @include flex(row, center, center, nowrap);
+  min-height: 100vh;
+  .text {
+    font-size: 24px;
+  }
+}

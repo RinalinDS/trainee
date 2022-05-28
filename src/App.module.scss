@@ -1,4 +1,4 @@
-@import './src/scss/mixins';
+@import 'components/common/styles/mixins';
 
 .top {
   @include flex(row, space-evenly , space-between, wrap);

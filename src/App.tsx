@@ -10,9 +10,9 @@ import DynamicPagination from './ForTests/DynamicPagination';
 
 import {Header} from './components/Header/Header';
 import NotFoundPage from './pages/404/NotFoundPage';
-import {Start} from './Start';
+import {Start} from './components/common/Start/Start';
 import styled from 'styled-components';
-import Toggler from './Toggler';
+import Toggler from './components/Toggler/Toggler';
 
 const AppWrapper = styled.div<{ background?: boolean }>`
   width: 100%;
