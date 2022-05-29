@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../../../store/store';
 import {movieType, requestMovieByTitleAC} from '../../../store/appReducer';
 import styles from './Omdb.module.css'
+import {Button} from '../../common/Button/Button';
 
 export const Omdb = () => {
     const [title, setTitle] = useState<string>('')
@@ -18,7 +19,7 @@ export const Omdb = () => {
 
     return (
         <div className={styles.photos}>
-            <button onClick={getMovie}>Get {title} movie</button>
+            <Button onClick={getMovie}>Find {title} movie</Button>
             <input type={'text'} value={title} onChange={e => {
                 setTitle(e.currentTarget.value)
             }}/>

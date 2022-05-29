@@ -4,6 +4,7 @@ import {AppRootStateType} from '../../../store/store';
 import {photosType, requestPhotosAC} from '../../../store/appReducer';
 import styles from './Photos.module.css'
 import Flex from '../../common/Flex/Flex';
+import {Button} from '../../common/Button/Button';
 
 
 export const Photos = () => {
@@ -25,7 +26,7 @@ export const Photos = () => {
 
     return (
         <div className={styles.photos}>
-            <button onClick={getPhotos}>Get {amount} photos</button>
+            <Button onClick={getPhotos}>Get {amount} photos</Button>
             <input type={'number'} value={amount} onChange={e => {
                 setAmount(+e.currentTarget.value)
             }}/>
