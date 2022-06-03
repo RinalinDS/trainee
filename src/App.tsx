@@ -45,34 +45,32 @@ export const App: FC = () => {
   return (
     <>
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      <GlobalStyles/>
-      <AppWrapper>
-        <div className={styles.top}>
-          {/*<Flex direction={'row'} justify={'center'} align={'flex-start'}>*/}
-          <Toggler value={isDarkTheme} onChange={toggleTheme}> {isDarkTheme ? 'Make Light' : ' Make Dark'} </Toggler>
-          <Header/>
-          {/*</Flex>*/}
-        </div>
-        <div className={styles.content}>
-          <Routes>
-            <Route index element={<Start/>}/>
-            <Route path={'placeholder'} element={<Photos/>}/>
-            <Route path={'omdb'} element={<Omdb/>}/>
-            <Route path={'weather'} element={<Weather/>}/>
-            <Route path={'test'} element={<TestComponent/>}/>
-            <Route path={'pagination'} element={<DefaultPagination/>}/>
-            <Route path={'dynamic'} element={<DynamicPagination/>}/>
-            {/*<Route path={'placeholder'} element={<><Header/><Photos/></>}/>*/}
-            {/*<Route path={'omdb'} element={<><Header/><Omdb/></>}/>*/}
-            {/*<Route path={'weather'} element={<><Header/><Weather/></>}/>*/}
-            {/*<Route path={'test'} element={<><Header/><TestComponent/></>}/>*/}
-            {/*<Route path={'pagination'} element={<><Header/><DefaultPagination/></>}/>*/}
-            {/*<Route path={'dynamic'} element={<><Header/><DynamicPagination/></>}/>*/}
-            <Route path={'*'} element={<Navigate to={'/404'}/>}/>
-            <Route path={'/404'} element={<NotFoundPage/>}/>
-          </Routes>
-        </div>
-      </AppWrapper>
+        <GlobalStyles/>
+        <AppWrapper>
+          <div className={`${styles.top} ${isDarkTheme ? styles.dark : styles.light }`}>
+            <Toggler value={isDarkTheme} onChange={toggleTheme}> {isDarkTheme ? 'Make Light' : ' Make Dark'} </Toggler>
+            <Header/>
+          </div>
+          <div className={styles.content}>
+            <Routes>
+              <Route index element={<Start/>}/>
+              <Route path={'placeholder'} element={<Photos/>}/>
+              <Route path={'omdb'} element={<Omdb/>}/>
+              <Route path={'weather'} element={<Weather/>}/>
+              <Route path={'test'} element={<TestComponent/>}/>
+              <Route path={'pagination'} element={<DefaultPagination/>}/>
+              <Route path={'dynamic'} element={<DynamicPagination/>}/>
+              {/*<Route path={'placeholder'} element={<><Header/><Photos/></>}/>*/}
+              {/*<Route path={'omdb'} element={<><Header/><Omdb/></>}/>*/}
+              {/*<Route path={'weather'} element={<><Header/><Weather/></>}/>*/}
+              {/*<Route path={'test'} element={<><Header/><TestComponent/></>}/>*/}
+              {/*<Route path={'pagination'} element={<><Header/><DefaultPagination/></>}/>*/}
+              {/*<Route path={'dynamic'} element={<><Header/><DynamicPagination/></>}/>*/}
+              <Route path={'*'} element={<Navigate to={'/404'}/>}/>
+              <Route path={'/404'} element={<NotFoundPage/>}/>
+            </Routes>
+          </div>
+        </AppWrapper>
       </ThemeProvider>
     </>
   );
