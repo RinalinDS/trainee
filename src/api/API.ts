@@ -13,7 +13,7 @@ const weatherInstance = axios.create({
 })
 
 
-const APIkey = 'c128d6a5'
+const OMDB_APIkey = 'c128d6a5'
 const APIkeyWeather = '23de8120205d45f589a195634221104'
 
 
@@ -26,7 +26,7 @@ export const placeholderAPI = {
 
 export const omdbAPI = {
     getMovie(title: string) {
-        return omdbInstance.get(`?apikey=${APIkey}&t=${title}`)
+        return omdbInstance.get(`?apikey=${OMDB_APIkey}&t=${title}`)
     }
 }
 

@@ -24,7 +24,6 @@ export const Header = () => {
       <NavLink to={'/test'}> TestComponent</NavLink>
       <NavLink to={'/pagination'}> DefaultPagination</NavLink>
       <NavLink to={'/dynamic'}> DynamicPagination</NavLink>
-
     </StyledHeader>
   );
 };

@@ -1,27 +1,19 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, ReactElement, useEffect, useState} from 'react';
 import styles from './App.module.scss';
-import {Navigate, Route, Routes} from 'react-router-dom';
-import {Photos} from './components/pages/Photos/Photos';
-import {Omdb} from './components/pages/omdb/omdb';
-import {Weather} from './components/pages/Weather/Weather';
-import {TestComponent} from './components/pages/TestComponent/TestComponent';
-import DefaultPagination from './components/pages/DefaultPagination/DefaultPagination';
-import DynamicPagination from './components/pages/DynamicPagination/DynamicPagination';
 import {Header} from './components/Header/Header';
-import NotFoundPage from './components/pages/404/NotFoundPage';
-import {Start} from './components/Start/Start';
 import styled, {ThemeProvider} from 'styled-components';
 import {Toggler} from './components/Toggler/Toggler';
 import {darkTheme, GlobalStyles, lightTheme} from './components/common/styles/Global';
+import {RoutesComponent} from './components/Routes/Routes';
 
 
-const AppWrapper = styled.div<{ background?: boolean }>`
+const AppWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
 `
 
 
-export const App: FC = () => {
+export const App: FC = (): ReactElement => {
   const [theme, setTheme] = useState("dark");
   const isDarkTheme = theme === "dark";
 
@@ -41,39 +33,25 @@ export const App: FC = () => {
     }
   }, []);
 
+  const headerCN = `${styles.top} ${isDarkTheme ? styles.dark : styles.light}`
+  const themeCN = isDarkTheme ? darkTheme : lightTheme
 
   return (
     <>
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+      <ThemeProvider theme={themeCN}>
         <GlobalStyles/>
         <AppWrapper>
-          <div className={`${styles.top} ${isDarkTheme ? styles.dark : styles.light }`}>
-            <Toggler value={isDarkTheme} onChange={toggleTheme}> {isDarkTheme ? 'Make Light' : ' Make Dark'} </Toggler>
+          <div className={headerCN}>
+            <Toggler value={isDarkTheme} onChange={toggleTheme}> <span style={{padding: '5px'}}>Dark</span></Toggler>
             <Header/>
           </div>
           <div className={styles.content}>
-            <Routes>
-              <Route index element={<Start/>}/>
-              <Route path={'placeholder'} element={<Photos/>}/>
-              <Route path={'omdb'} element={<Omdb/>}/>
-              <Route path={'weather'} element={<Weather/>}/>
-              <Route path={'test'} element={<TestComponent/>}/>
-              <Route path={'pagination'} element={<DefaultPagination/>}/>
-              <Route path={'dynamic'} element={<DynamicPagination/>}/>
-              {/*<Route path={'placeholder'} element={<><Header/><Photos/></>}/>*/}
-              {/*<Route path={'omdb'} element={<><Header/><Omdb/></>}/>*/}
-              {/*<Route path={'weather'} element={<><Header/><Weather/></>}/>*/}
-              {/*<Route path={'test'} element={<><Header/><TestComponent/></>}/>*/}
-              {/*<Route path={'pagination'} element={<><Header/><DefaultPagination/></>}/>*/}
-              {/*<Route path={'dynamic'} element={<><Header/><DynamicPagination/></>}/>*/}
-              <Route path={'*'} element={<Navigate to={'/404'}/>}/>
-              <Route path={'/404'} element={<NotFoundPage/>}/>
-            </Routes>
+            <RoutesComponent/>
           </div>
         </AppWrapper>
       </ThemeProvider>
     </>
-  );
+  )
 }
 
 

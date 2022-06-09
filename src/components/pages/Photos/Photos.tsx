@@ -1,40 +1,50 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../../../store/store';
-import {photosType, requestPhotosAC} from '../../../store/appReducer';
+import {photosType, setPhotosAC} from '../../../store/appReducer';
 import styles from './Photos.module.css'
 import Flex from '../../common/Flex/Flex';
 import {Button} from '../../common/Button/Button';
 
 
 export const Photos = () => {
-    const [amount, setAmount] = useState<number>(0)
+  const [amount, setAmount] = useState<number>(0)
 
-    const dispatch = useDispatch()
-    const photos = useSelector<AppRootStateType, photosType[]>(state => state.app.photos)
+  const dispatch = useDispatch()
+  const photos = useSelector<AppRootStateType, photosType[]>(state => state.app.photos)
 
-    const mappedPhotos = photos.map(m => <div><h2>{m.title}</h2>
-           <Flex justify={'center'}> <img src={m.thumbnailUrl} alt={'movie poster'}/> </Flex>
-        </div>
-    )
+  const mappedPhotos = photos.map(m => <div key={m.id}><h2>{m.title}</h2>
+      <Flex justify={'center'}> <img src={m.thumbnailUrl} alt={'movie poster'}/> </Flex>
+    </div>
+  )
 
 
-    const getPhotos = () => {
-        dispatch(requestPhotosAC(amount))
+  const getPhotos = async () => {
+    // dispatch(requestPhotosAC(amount))
+    let response = await fetch(`https://jsonplaceholder.typicode.com/photos?_start=0&_limit=${amount}`)
+    if (response.ok) {
+      console.log(response)
+      let data = await response.json()
+      console.log(data)
+      dispatch(setPhotosAC(data))
+    } else {
+      console.warn('something wrong with request')
     }
 
-
-    return (
-        <div className={styles.photos}>
-            <Button onClick={getPhotos}>Get {amount} photos</Button>
-            <input type={'number'} value={amount} onChange={e => {
-                setAmount(+e.currentTarget.value)
-            }}/>
-           <div>
-                {mappedPhotos}
-            </div>
+  }
 
 
-        </div>
-    );
+  return (
+    <div className={styles.photos}>
+      <Button onClick={getPhotos}>Get {amount} photos</Button>
+      <input type={'number'} value={amount} onChange={e => {
+        setAmount(+e.currentTarget.value)
+      }}/>
+      <div>
+        {mappedPhotos}
+      </div>
+
+
+    </div>
+  );
 }
