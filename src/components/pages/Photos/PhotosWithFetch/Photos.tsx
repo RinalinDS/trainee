@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from '../../../store/store';
-import {photosType, requestPhotosAC} from '../../../store/appReducer';
+import {photosType, setPhotosAC} from '../../../../store/appReducer';
+import {AppRootStateType} from '../../../../store/store';
+import Flex from '../../../common/Flex/Flex';
 import styles from './Photos.module.css'
-import Flex from '../../common/Flex/Flex';
-import {Button} from '../../common/Button/Button';
+import {Button} from '../../../common/Button/Button';
 
 
-export const Photos = () => {
+export const PhotosWithFetch = () => {
   const [amount, setAmount] = useState<number>(0)
 
   const dispatch = useDispatch()
@@ -19,8 +19,16 @@ export const Photos = () => {
   )
 
 
-  const getPhotos = () => {
-    dispatch(requestPhotosAC(amount))
+  const getPhotos = async () => {
+    let response = await fetch(`https://jsonplaceholder.typicode.com/photos?_start=0&_limit=${amount}`)
+    if (response.ok) {
+      console.log(response)
+      let data = await response.json()
+      console.log(data)
+      dispatch(setPhotosAC(data))
+    } else {
+      console.warn('something wrong with request')
+    }
   }
 
 

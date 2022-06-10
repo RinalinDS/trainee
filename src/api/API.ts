@@ -33,5 +33,8 @@ export const omdbAPI = {
 export const weatherAPI = {
     getCurrentWeatherInCity(city: string) {
         return weatherInstance.get<WeatherResponseType>(`current.json?key=${APIkeyWeather}&q=${city}`)
+    },
+    getForecast(city:string, days: number) {
+        return weatherInstance.get<WeatherResponseType>(`forecast.json?key=${APIkeyWeather}&q=${city}&days=${days}`)
     }
 }
