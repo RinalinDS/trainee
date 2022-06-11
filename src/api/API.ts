@@ -36,5 +36,10 @@ export const weatherAPI = {
     },
     getForecast(city:string, days: number) {
         return weatherInstance.get<WeatherResponseType>(`forecast.json?key=${APIkeyWeather}&q=${city}&days=${days}`)
+    },
+    getForecastFetch: async function (city: string, days: number) {
+        const res = await fetch(`forecast.json?key=${APIkeyWeather}&q=${city}&days=${days}`)
+        const data = await res.json()
+        return data
     }
 }
