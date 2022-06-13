@@ -42,7 +42,7 @@ export const Weather = () => {
         <p> Would you like to get forecast in {weather.location.name} for let's say 3 days? </p>
         <button onClick={OnGetForecastClickHandler}>DEW IT</button>
         {(Object.keys(forecastWeather).length !== 0) && <div>
-          <div>Here's what we got for you</div>
+          <div style={{marginTop:'30px'}}>Here's what we got for you</div>
           {forecastWeather.forecast.forecastday.map((m: any) => {
             return (
               <>
