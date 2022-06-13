@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../../../store/store';
-import {movieType, requestMovieByTitleAC} from '../../../store/appReducer';
+import {requestMovieByTitleAC} from '../../../store/appReducer';
 import styles from './Omdb.module.css'
 import {Button} from '../../common/Button/Button';
+import {MovieType} from '../../../types';
 
 export const Omdb = () => {
     const [title, setTitle] = useState<string>('')
 
     const dispatch = useDispatch()
-    const movie = useSelector<AppRootStateType, movieType>(state => state.app.movies)
+    const movie = useSelector<AppRootStateType, MovieType>(state => state.app.movies)
 
 
     const getMovie = () => {

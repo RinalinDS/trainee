@@ -2,12 +2,15 @@ import {call, put, takeEvery} from 'redux-saga/effects';
 import {AxiosResponse} from 'axios';
 import {omdbAPI, placeholderAPI, weatherAPI} from '../api/API';
 import {ThunkType} from './store';
+import {fetchOmdbAPI} from '../api/fetchConfig';
+import {MovieType} from '../types';
+
 
 // initial state
 
 const initialState: AppReducerStateType = {
   photos: [],
-  movies: {} as movieType,
+  movies: {} as MovieType,
   cityWeather: {} as WeatherResponseType,
   forecastWeather: {}
 
@@ -20,7 +23,6 @@ export const appReducer = (state: AppReducerStateType = initialState, action: Ap
     case 'SET_PHOTOS':
       return {...state, photos: [...action.payload.photos]}
     case 'SET_MOVIE':
-      // @ts-ignore
       return {...state, movies: {...action.payload.movie}}
     case 'SET_CURRENT_WEATHER':
       return {...state, cityWeather: {...action.payload.cityWeather}}
@@ -37,7 +39,7 @@ export const appReducer = (state: AppReducerStateType = initialState, action: Ap
 export const setPhotosAC = (photos: photosType[]) => ({type: 'SET_PHOTOS', payload: {photos}} as const)
 export const requestPhotosAC = (amount: number) => ({type: 'REQUEST_PHOTOS', payload: {amount}} as const)
 
-export const setMovieAC = (movie: Object) => ({type: 'SET_MOVIE', payload: {movie}} as const)
+export const setMovieAC = (movie: MovieType) => ({type: 'SET_MOVIE', payload: {movie}} as const)
 export const requestMovieByTitleAC = (title: string) => ({type: 'REQUEST_MOVIE', payload: {title}} as const)
 export const setCurrentCityWeatherAC = (cityWeather: WeatherResponseType) => ({
   type: 'SET_CURRENT_WEATHER',
@@ -94,9 +96,19 @@ export function* setMovieWorker(action: requestMovieByTitleACType) {
   }
 }
 
+export function* setMovieWorkerFetch(action: requestMovieByTitleACType) {
+  try {
+    console.log('we using fetch')
+    const res: MovieType = yield call(fetchOmdbAPI.getMovie, action.payload.title)
+    yield put(setMovieAC(res))
+  } catch (e) {
+    console.warn(e)
+  }
+}
+
 export function* AppWatcher() {
   yield takeEvery('REQUEST_PHOTOS', setPhotosWorker)
-  yield takeEvery('REQUEST_MOVIE', setMovieWorker)
+  yield takeEvery('REQUEST_MOVIE', setMovieWorkerFetch)
 }
 
 // Types
@@ -121,18 +133,18 @@ export type photosType = {
 }
 export type AppReducerStateType = {
   photos: Array<photosType>
-  movies: movieType
+  movies: MovieType
   cityWeather: WeatherResponseType
   forecastWeather: any
 }
 
-export type movieType = {
-  Title: string
-  Year: string
-  Poster: string
-  Plot: string
-  Error: string
-}
+// export type movieType = {
+//   Title: string
+//   Year: string
+//   Poster: string
+//   Plot: string
+//   Error: string
+// }
 
 export type WeatherResponseType = {
   location: {

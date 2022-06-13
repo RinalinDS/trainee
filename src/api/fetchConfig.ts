@@ -1,11 +1,52 @@
-let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
+import axios from 'axios';
+import {WeatherResponseType} from '../store/appReducer';
 
-let promise = await fetch(url)
+const placeholderInstance = axios.create({
+  baseURL: 'https://jsonplaceholder.typicode.com'
+})
+const omdbInstance = axios.create({
+  baseURL: 'https://www.omdbapi.com/',
+
+})
+const weatherInstance = axios.create({
+  baseURL: 'http://api.weatherapi.com/v1/',
+})
 
 
-let commits = await promise.json()
+const OMDB_APIkey = 'c128d6a5'
+const APIkeyWeather = '23de8120205d45f589a195634221104'
 
-console.log(commits[0].author.login)
+
+export const placeholderAPI = {
+  getPhotos(amount: number) {
+    return placeholderInstance.get(`photos?_start=0&_limit=${amount}`)
+  }
+}
+
+
+export const fetchOmdbAPI = {
+  async getMovie(title: string) {
+    const response = await fetch(`https://www.omdbapi.com/?apikey=${OMDB_APIkey}&t=${title}`)
+    const res = await response.json()
+    console.log(res)
+    return res; // parses JSON response into native JavaScript objects
+
+  }
+}
+
+export const weatherAPI = {
+  getCurrentWeatherInCity(city: string) {
+    return weatherInstance.get<WeatherResponseType>(`current.json?key=${APIkeyWeather}&q=${city}`)
+  },
+  getForecast(city: string, days: number) {
+    return weatherInstance.get<WeatherResponseType>(`forecast.json?key=${APIkeyWeather}&q=${city}&days=${days}`)
+  },
+  getForecastFetch: async function (city: string, days: number) {
+    const res = await fetch(`forecast.json?key=${APIkeyWeather}&q=${city}&days=${days}`)
+    return await res.json()
+  }
+}
+
 
 export default () => {
 }
