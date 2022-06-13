@@ -30,7 +30,6 @@ export const fetchOmdbAPI = {
     const res = await response.json()
     console.log(res)
     return res; // parses JSON response into native JavaScript objects
-
   }
 }
 
@@ -48,5 +47,3 @@ export const weatherAPI = {
 }
 
 
-export default () => {
-}
